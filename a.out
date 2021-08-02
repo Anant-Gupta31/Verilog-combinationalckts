@@ -1,0 +1,47 @@
+#! /usr/share/iverilog-0.9.7/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_6)";
+:vpi_time_precision - 11;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x1a39f00 .scope module, "half_sub_tb" "half_sub_tb" 2 7;
+ .timescale -9 -11;
+P_0x1a166f8 .param/l "period" 2 12, +C4<010100>;
+v0x1a4a920_0 .var "a", 0 0;
+v0x1a4a9f0_0 .var "b", 0 0;
+v0x1a4aaa0_0 .net "borrow", 0 0, L_0x1a4ae20; 1 drivers
+v0x1a4ab50_0 .net "diff", 0 0, L_0x1a4ac30; 1 drivers
+S_0x1a39ff0 .scope module, "UUT" "half_sub" 2 14, 3 2, S_0x1a39f00;
+ .timescale 0 0;
+L_0x1a4ac30 .functor XOR 1, v0x1a4a920_0, v0x1a4a9f0_0, C4<0>, C4<0>;
+L_0x1a4ae20 .functor AND 1, L_0x1a4ad80, v0x1a4a9f0_0, C4<1>, C4<1>;
+v0x1a3a0e0_0 .net *"_s3", 0 0, L_0x1a4ad80; 1 drivers
+v0x1a4a690_0 .net "a", 0 0, v0x1a4a920_0; 1 drivers
+v0x1a4a730_0 .net "b", 0 0, v0x1a4a9f0_0; 1 drivers
+v0x1a4a7d0_0 .alias "borrow", 0 0, v0x1a4aaa0_0;
+v0x1a4a880_0 .alias "diff", 0 0, v0x1a4ab50_0;
+L_0x1a4ad80 .reduce/nor v0x1a4a920_0;
+    .scope S_0x1a39f00;
+T_0 ;
+    %vpi_call 2 18 "$dumpfile", "dump.vcd";
+    %vpi_call 2 19 "$dumpvars", 2'sb01;
+    %set/v v0x1a4a920_0, 0, 1;
+    %set/v v0x1a4a9f0_0, 0, 1;
+    %delay 2000, 0;
+    %set/v v0x1a4a920_0, 0, 1;
+    %set/v v0x1a4a9f0_0, 1, 1;
+    %delay 2000, 0;
+    %set/v v0x1a4a920_0, 1, 1;
+    %set/v v0x1a4a9f0_0, 0, 1;
+    %delay 2000, 0;
+    %set/v v0x1a4a920_0, 1, 1;
+    %set/v v0x1a4a9f0_0, 1, 1;
+    %delay 2000, 0;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "testbench.sv";
+    "design.sv";
