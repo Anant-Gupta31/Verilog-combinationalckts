@@ -1,44 +1,98 @@
 #! /usr/share/iverilog-0.9.7/bin/vvp
 :ivl_version "0.9.7 " "(v0_9_6)";
-:vpi_time_precision - 11;
+:vpi_time_precision + 0;
 :vpi_module "system";
 :vpi_module "v2005_math";
 :vpi_module "va_math";
-S_0x1a39f00 .scope module, "half_sub_tb" "half_sub_tb" 2 7;
- .timescale -9 -11;
-P_0x1a166f8 .param/l "period" 2 12, +C4<010100>;
-v0x1a4a920_0 .var "a", 0 0;
-v0x1a4a9f0_0 .var "b", 0 0;
-v0x1a4aaa0_0 .net "borrow", 0 0, L_0x1a4ae20; 1 drivers
-v0x1a4ab50_0 .net "diff", 0 0, L_0x1a4ac30; 1 drivers
-S_0x1a39ff0 .scope module, "UUT" "half_sub" 2 14, 3 2, S_0x1a39f00;
+S_0x268f920 .scope module, "top" "top" 2 3;
  .timescale 0 0;
-L_0x1a4ac30 .functor XOR 1, v0x1a4a920_0, v0x1a4a9f0_0, C4<0>, C4<0>;
-L_0x1a4ae20 .functor AND 1, L_0x1a4ad80, v0x1a4a9f0_0, C4<1>, C4<1>;
-v0x1a3a0e0_0 .net *"_s3", 0 0, L_0x1a4ad80; 1 drivers
-v0x1a4a690_0 .net "a", 0 0, v0x1a4a920_0; 1 drivers
-v0x1a4a730_0 .net "b", 0 0, v0x1a4a9f0_0; 1 drivers
-v0x1a4a7d0_0 .alias "borrow", 0 0, v0x1a4aaa0_0;
-v0x1a4a880_0 .alias "diff", 0 0, v0x1a4ab50_0;
-L_0x1a4ad80 .reduce/nor v0x1a4a920_0;
-    .scope S_0x1a39f00;
-T_0 ;
-    %vpi_call 2 18 "$dumpfile", "dump.vcd";
-    %vpi_call 2 19 "$dumpvars", 2'sb01;
-    %set/v v0x1a4a920_0, 0, 1;
-    %set/v v0x1a4a9f0_0, 0, 1;
-    %delay 2000, 0;
-    %set/v v0x1a4a920_0, 0, 1;
-    %set/v v0x1a4a9f0_0, 1, 1;
-    %delay 2000, 0;
-    %set/v v0x1a4a920_0, 1, 1;
-    %set/v v0x1a4a9f0_0, 0, 1;
-    %delay 2000, 0;
-    %set/v v0x1a4a920_0, 1, 1;
-    %set/v v0x1a4a9f0_0, 1, 1;
-    %delay 2000, 0;
+v0x26a7770_0 .var "a", 0 0;
+v0x26a77f0_0 .var "b", 0 0;
+v0x26a78a0_0 .var "c", 0 0;
+v0x26a7950_0 .var "d", 0 0;
+v0x26a7a00_0 .net "out", 0 0, L_0x26a8b60; 1 drivers
+v0x26a7ab0_0 .var "s0", 0 0;
+v0x26a7b30_0 .var "s1", 0 0;
+E_0x267ec80/0 .event edge, v0x26a7430_0, v0x26a7550_0, v0x26a73b0_0, v0x26a7120_0;
+E_0x267ec80/1 .event edge, v0x26a7260_0, v0x26a71c0_0;
+E_0x267ec80 .event/or E_0x267ec80/0, E_0x267ec80/1;
+S_0x26a7680 .scope task, "display" "display" 2 42, 2 42, S_0x268f920;
+ .timescale 0 0;
+TD_top.display ;
+    %delay 1, 0;
+    %vpi_call 2 43 "$display", "out:%0h, s1:%0h, s0:%0h", v0x26a7a00_0, v0x26a7b30_0, v0x26a7ab0_0;
     %end;
-    .thread T_0;
+S_0x268fa10 .scope module, "name" "mux4x1" 2 12, 3 2, S_0x268f920;
+ .timescale 0 0;
+v0x268fb00_0 .net *"_s1", 0 0, L_0x26a7be0; 1 drivers
+v0x26a67b0_0 .net *"_s11", 0 0, L_0x26a80c0; 1 drivers
+v0x26a6850_0 .net *"_s13", 0 0, L_0x26a81f0; 1 drivers
+v0x26a68f0_0 .net *"_s14", 0 0, L_0x26a8330; 1 drivers
+v0x26a69a0_0 .net *"_s17", 0 0, L_0x26a84c0; 1 drivers
+v0x26a6a40_0 .net *"_s19", 0 0, L_0x26a85f0; 1 drivers
+v0x26a6b20_0 .net *"_s21", 0 0, L_0x26a8720; 1 drivers
+v0x26a6bc0_0 .net *"_s22", 0 0, L_0x26a87c0; 1 drivers
+v0x26a6cb0_0 .net *"_s25", 0 0, L_0x26a8900; 1 drivers
+v0x26a6d50_0 .net *"_s27", 0 0, L_0x26a89a0; 1 drivers
+v0x26a6e50_0 .net *"_s3", 0 0, L_0x26a7cb0; 1 drivers
+v0x26a6ef0_0 .net *"_s5", 0 0, L_0x26a7da0; 1 drivers
+v0x26a7000_0 .net *"_s7", 0 0, L_0x26a7ee0; 1 drivers
+v0x26a70a0_0 .net *"_s9", 0 0, L_0x26a8020; 1 drivers
+v0x26a71c0_0 .net "a", 0 0, v0x26a7770_0; 1 drivers
+v0x26a7260_0 .net "b", 0 0, v0x26a77f0_0; 1 drivers
+v0x26a7120_0 .net "c", 0 0, v0x26a78a0_0; 1 drivers
+v0x26a73b0_0 .net "d", 0 0, v0x26a7950_0; 1 drivers
+v0x26a74d0_0 .alias "out", 0 0, v0x26a7a00_0;
+v0x26a7550_0 .net "s0", 0 0, v0x26a7ab0_0; 1 drivers
+v0x26a7430_0 .net "s1", 0 0, v0x26a7b30_0; 1 drivers
+L_0x26a7be0 .reduce/nor v0x26a7ab0_0;
+L_0x26a7cb0 .reduce/nor v0x26a7b30_0;
+L_0x26a7da0 .arith/mult 1, L_0x26a7be0, L_0x26a7cb0;
+L_0x26a7ee0 .arith/mult 1, L_0x26a7da0, v0x26a7770_0;
+L_0x26a8020 .reduce/nor v0x26a7b30_0;
+L_0x26a80c0 .arith/mult 1, v0x26a7ab0_0, L_0x26a8020;
+L_0x26a81f0 .arith/mult 1, L_0x26a80c0, v0x26a77f0_0;
+L_0x26a8330 .arith/sum 1, L_0x26a7ee0, L_0x26a81f0;
+L_0x26a84c0 .reduce/nor v0x26a7ab0_0;
+L_0x26a85f0 .arith/mult 1, L_0x26a84c0, v0x26a7b30_0;
+L_0x26a8720 .arith/mult 1, L_0x26a85f0, v0x26a78a0_0;
+L_0x26a87c0 .arith/sum 1, L_0x26a8330, L_0x26a8720;
+L_0x26a8900 .arith/mult 1, v0x26a7ab0_0, v0x26a7b30_0;
+L_0x26a89a0 .arith/mult 1, L_0x26a8900, v0x26a7950_0;
+L_0x26a8b60 .arith/sum 1, L_0x26a87c0, L_0x26a89a0;
+    .scope S_0x268f920;
+T_1 ;
+    %vpi_call 2 15 "$dumpfile", "dump.vcd";
+    %vpi_call 2 16 "$dumpvars", 2'sb01;
+    %set/v v0x26a7770_0, 1, 1;
+    %set/v v0x26a77f0_0, 0, 1;
+    %set/v v0x26a78a0_0, 1, 1;
+    %set/v v0x26a7950_0, 0, 1;
+    %set/v v0x26a7ab0_0, 0, 1;
+    %set/v v0x26a7b30_0, 0, 1;
+    %delay 20, 0;
+    %set/v v0x26a7ab0_0, 0, 1;
+    %set/v v0x26a7b30_0, 0, 1;
+    %delay 20, 0;
+    %set/v v0x26a7ab0_0, 1, 1;
+    %set/v v0x26a7b30_0, 0, 1;
+    %delay 20, 0;
+    %set/v v0x26a7ab0_0, 0, 1;
+    %set/v v0x26a7b30_0, 1, 1;
+    %delay 20, 0;
+    %set/v v0x26a7ab0_0, 1, 1;
+    %set/v v0x26a7b30_0, 1, 1;
+    %delay 20, 0;
+    %set/v v0x26a7ab0_0, 0, 1;
+    %set/v v0x26a7b30_0, 0, 1;
+    %end;
+    .thread T_1;
+    .scope S_0x268f920;
+T_2 ;
+    %wait E_0x267ec80;
+    %vpi_call 2 41 "$monitor", "At time = %t, Output = %d, S1 = %d, S0 = %d", $time, v0x26a7a00_0, v0x26a7b30_0, v0x26a7ab0_0;
+    %jmp T_2;
+    .thread T_2, $push;
 # The file index is used to find the file name in the following table.
 :file_names 4;
     "N/A";
